@@ -25,14 +25,10 @@ python-software-properties \
 zoneminder \
 libvlc-dev \
 libvlccore-dev vlc && \
-rm -r /etc/init.d/zoneminder && \
 a2enmod cgi && \
 service apache2 restart && \
 service mysql restart && \
-mysql -e "create database zm" && \
-mysql zm < /usr/share/zoneminder/db/zm_create.sql && \
-mysql zm -e "grant select,insert,update,delete,lock tables,alter on zm.* to 'zmuser'@localhost identified by 'zmpass'" && \
-mysqladmin reload
+rm -r /etc/init.d/zoneminder
 
 ADD zoneminder /etc/init.d/zoneminder
 ADD firstrun.sh /root/firstrun.sh
