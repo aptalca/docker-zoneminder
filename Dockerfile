@@ -9,7 +9,7 @@ EXPOSE 80
 RUN echo $TZ > /etc/timezone && \
 export DEBCONF_NONINTERACTIVE_SEEN=true DEBIAN_FRONTEND=noninteractive && \
 dpkg-reconfigure tzdata && \
-add-apt-repository ppa:iconnor/zoneminder && \
+add-apt-repository -y ppa:iconnor/zoneminder && \
 apt-get update && \
 apt-get install -y \
 wget \
