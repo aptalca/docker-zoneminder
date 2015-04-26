@@ -16,7 +16,10 @@ wget \
 apache2 \
 mysql-server \
 php5 \
-libapache2-mod-php5 \
+libapache2-mod-php5 && \
+service apache2 restart && \
+service mysql restart && \
+apt-get install -y \
 software-properties-common \
 python-software-properties \
 zoneminder \
@@ -24,6 +27,7 @@ libvlc-dev \
 libvlccore-dev vlc && \
 rm -r /etc/init.d/zoneminder && \
 a2enmod cgi && \
+service apache2 restart && \
 service mysql restart && \
 mysql -e "create database zm" && \
 mysql zm < db/zm_create.sql && \
