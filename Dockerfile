@@ -22,7 +22,7 @@ python-software-properties \
 zoneminder \
 libvlc-dev \
 libvlccore-dev vlc && \
-rm /etc/init.d/zoneminder && \
+rm -r /etc/init.d/zoneminder && \
 a2enmod cgi && \
 service mysql restart && \
 mysql -e "create database zm" && \
