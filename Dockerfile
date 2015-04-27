@@ -35,7 +35,6 @@ ADD zoneminder /etc/init.d/zoneminder
 ADD firstrun.sh /etc/my_init.d/firstrun.sh
 
 RUN chmod +x /etc/init.d/zoneminder && \
-chmod +x /root/firstrun.sh && \
 mkdir /etc/apache2/conf.d && \
 ln -s /etc/zm/apache.conf /etc/apache2/conf.d/zoneminder.conf && \
 ln -s /etc/zm/apache.conf /etc/apache2/conf-enabled/zoneminder.conf && \
