@@ -47,4 +47,5 @@
   
   service mysql restart
   service apache2 restart
-  /usr/local/bin/zmpkg.pl start
+  service zoneminder restart
+  
