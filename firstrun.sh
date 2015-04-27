@@ -15,13 +15,28 @@
     chmod a+w /config/zm.conf
   fi
   
+  # Copy mysql database if it doesn't exit
   if [ ! -d /config/mysql/zm ]; then
     mkdir -p /config/mysql/zm
     cp /var/lib/mysql/zm/* /config/mysql/zm/
     chmod -R o+rw /config/mysql/zm
   fi
   
+  # Copy data folder if it doesn't exist
+  if [ ! -d /config/data/zoneminder ]; then
+    mkdir /config/data
+    cp -R -p /usr/share/zoneminder /config/data
+    rm /config/data/zoneminder/images
+    rm /config/data/zoneminder/events
+    rm /config/data/zoneminder/temp
+    mkdir /config/data/zoneminder/images
+    mkdir /config/data/zoneminder/events
+    mkdir /config/data/zoneminder/temp
+  fi
+  
+  rm -r /usr/share/zoneminder
   rm -r /var/lib/mysql/zm
+  ln -s /config/data/zoneminder /usr/share/zoneminder
   ln -s /config/mysql/zm /var/lib/mysql/zm
   ln -s /config /etc/zm
   
