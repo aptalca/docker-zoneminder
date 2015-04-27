@@ -28,10 +28,11 @@ libvlccore-dev vlc && \
 a2enmod cgi && \
 service apache2 restart && \
 service mysql restart && \
-rm -r /etc/init.d/zoneminder
+rm -r /etc/init.d/zoneminder && \
+mkdir -p /etc/my_init.d
 
 ADD zoneminder /etc/init.d/zoneminder
-ADD firstrun.sh /root/firstrun.sh
+ADD firstrun.sh /etc/my_init.d/firstrun.sh
 
 RUN chmod +x /etc/init.d/zoneminder && \
 chmod +x /root/firstrun.sh && \
@@ -46,6 +47,5 @@ tar -xzvf cambozola-0.936.tar.gz && \
 cp cambozola-0.936/dist/cambozola.jar /usr/share/zoneminder && \
 cp /etc/zm/apache.conf /root/apache.conf && \
 cp /etc/zm/zm.conf /root/zm.conf && \
-rm -r /etc/zm
-
-CMD /root/firstrun.sh
+rm -r /etc/zm && \
+chmod +x /etc/my_init.d/firstrun.sh
