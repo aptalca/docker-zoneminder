@@ -7,7 +7,7 @@
   #Search for config files, if they don't exist, copy the default ones
   if [ ! -f /config/apache.conf ]; then
     cp /root/apache.conf /config/apache.conf
-    chmod a+w /config/duck.conf
+    chmod a+w /config/apache.conf
   fi
   
   if [ ! -f /config/zm.conf ]; then
