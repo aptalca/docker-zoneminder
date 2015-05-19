@@ -39,6 +39,7 @@
   ln -s /config/data/zoneminder /usr/share/zoneminder
   ln -s /config/mysql/zm /var/lib/mysql/zm
   ln -s /config /etc/zm
+  chmod -R go+rw /config
   
   #Get docker env timezone and set system timezone
   echo $TZ > /etc/timezone
