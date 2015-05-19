@@ -6,9 +6,7 @@ VOLUME ["/config"]
 
 EXPOSE 80
 
-RUN echo $TZ > /etc/timezone && \
-export DEBCONF_NONINTERACTIVE_SEEN=true DEBIAN_FRONTEND=noninteractive && \
-dpkg-reconfigure tzdata && \
+RUN export DEBCONF_NONINTERACTIVE_SEEN=true DEBIAN_FRONTEND=noninteractive && \
 add-apt-repository -y ppa:iconnor/zoneminder && \
 apt-get update && \
 apt-get install -y \
