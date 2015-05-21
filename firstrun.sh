@@ -1,52 +1,62 @@
 #!/bin/bash
-
-  service zoneminder stop
-  service apache stop
-  service mysql stop
   
   #Search for config files, if they don't exist, copy the default ones
   if [ ! -f /config/apache.conf ]; then
+    echo "copying apache.conf"
     cp /root/apache.conf /config/apache.conf
-    chmod a+w /config/apache.conf
+  else
+    echo "apache.conf already exists"
   fi
   
   if [ ! -f /config/zm.conf ]; then
+    echo "copying zm.conf"
     cp /root/zm.conf /config/zm.conf
-    chmod a+w /config/zm.conf
+  else
+    echo "zm.conf already exists"
   fi
   
   # Copy mysql database if it doesn't exit
-  if [ ! -d /config/mysql/zm ]; then
-    mkdir -p /config/mysql/zm
-    cp /var/lib/mysql/zm/* /config/mysql/zm/
-    chmod -R o+rw /config/mysql/zm
+  if [ ! -d /config/mysql/mysql ]; then
+    echo "moving mysql to config folder"
+    rm -r /config/mysql
+    cp -p -R /var/lib/mysql /config/
+  else
+    echo "using existing mysql database"
   fi
   
   # Copy data folder if it doesn't exist
-  if [ ! -d /config/data/zoneminder ]; then
+  if [ ! -d /config/data ]; then
+    echo "moving data folder to config folder"
     mkdir /config/data
-    cp -R -p /usr/share/zoneminder /config/data
+    cp -R -p /usr/share/zoneminder /config/data/
     rm /config/data/zoneminder/images
     rm /config/data/zoneminder/events
     rm /config/data/zoneminder/temp
     mkdir /config/data/zoneminder/images
     mkdir /config/data/zoneminder/events
     mkdir /config/data/zoneminder/temp
+  else
+    echo "using existing data directory"
   fi
   
+  echo "creating symbolink links"
   rm -r /usr/share/zoneminder
-  rm -r /var/lib/mysql/zm
+  rm -r /var/lib/mysql
+  rm -r /etc/zm
   ln -s /config/data/zoneminder /usr/share/zoneminder
-  ln -s /config/mysql/zm /var/lib/mysql/zm
+  ln -s /config/mysql /var/lib/mysql
   ln -s /config /etc/zm
+  chown -R mysql:mysql /var/lib/mysql
   chmod -R go+rw /config
   
   #Get docker env timezone and set system timezone
+  echo "setting the correct local time"
   echo $TZ > /etc/timezone
   export DEBCONF_NONINTERACTIVE_SEEN=true DEBIAN_FRONTEND=noninteractive
   dpkg-reconfigure tzdata
   
-  service mysql restart
-  service apache2 restart
-  service zoneminder restart
+  echo "starting services"
+  service mysql start
+  service apache2 start
+  service zoneminder start
   
