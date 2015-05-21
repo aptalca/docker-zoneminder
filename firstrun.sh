@@ -43,6 +43,7 @@
   echo "creating symbolink links"
   rm -r /usr/share/zoneminder
   rm -r /var/lib/mysql
+  rm -r /etc/zm
   ln -s /config/data/zoneminder /usr/share/zoneminder
   ln -s /config/mysql /var/lib/mysql
   ln -s /config /etc/zm
