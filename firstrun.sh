@@ -4,11 +4,15 @@
   if [ ! -f /config/apache.conf ]; then
     echo "copying apache.conf"
     cp /root/apache.conf /config/apache.conf
+  else
+    echo "apache.conf already exists"
   fi
   
   if [ ! -f /config/zm.conf ]; then
     echo "copying zm.conf"
     cp /root/zm.conf /config/zm.conf
+  else
+    echo "zm.conf already exists"
   fi
   
   # Copy mysql database if it doesn't exit
@@ -16,6 +20,8 @@
     echo "moving mysql to config folder"
     rm -r /config/mysql
     cp -p -R /var/lib/mysql /config/
+  else
+    echo "using existing mysql database"
   fi
   
   # Copy data folder if it doesn't exist
@@ -29,6 +35,8 @@
     mkdir /config/data/zoneminder/images
     mkdir /config/data/zoneminder/events
     mkdir /config/data/zoneminder/temp
+  else
+    echo "using existing data directory"
   fi
   
   echo "creating symbolink links"
@@ -42,6 +50,7 @@
   chmod -R go+rw /config
   
   #Get docker env timezone and set system timezone
+  echo "setting the correct local time"
   echo $TZ > /etc/timezone
   export DEBCONF_NONINTERACTIVE_SEEN=true DEBIAN_FRONTEND=noninteractive
   dpkg-reconfigure tzdata
