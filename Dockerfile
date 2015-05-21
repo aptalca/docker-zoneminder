@@ -1,4 +1,4 @@
-FROM phusion/baseimage:0.9.11
+FROM phusion/baseimage:0.9.16
 
 MAINTAINER aptalca
 
@@ -44,7 +44,6 @@ tar -xzvf cambozola-0.936.tar.gz && \
 cp cambozola-0.936/dist/cambozola.jar /usr/share/zoneminder && \
 cp /etc/zm/apache.conf /root/apache.conf && \
 cp /etc/zm/zm.conf /root/zm.conf && \
-rm -r /etc/zm && \
 #chmod +x /etc/my_init.d/firstrun.sh
 update-rc.d -f apache2 remove && \
 update-rc.d -f mysql remove && \
