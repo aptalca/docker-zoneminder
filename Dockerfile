@@ -7,6 +7,9 @@ VOLUME ["/config"]
 EXPOSE 80
 
 RUN export DEBCONF_NONINTERACTIVE_SEEN=true DEBIAN_FRONTEND=noninteractive && \
+sudo apt-get update && \
+sudo apt-get install -y software-properties-common \
+python-software-properties && \
 sudo add-apt-repository -y ppa:iconnor/zoneminder && \
 sudo apt-get update && \
 sudo apt-get install -y \
@@ -18,8 +21,6 @@ libapache2-mod-php5 && \
 service apache2 restart && \
 service mysql restart && \
 apt-get install -y \
-software-properties-common \
-python-software-properties \
 zoneminder \
 libvlc-dev \
 libvlccore-dev vlc && \
