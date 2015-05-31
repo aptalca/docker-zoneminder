@@ -46,8 +46,8 @@
   ln -s /config/data/zoneminder /usr/share/zoneminder
   ln -s /config/mysql /var/lib/mysql
   ln -s /config /etc/zm
-  chown -R mysql:mysql /var/lib/mysql
-  chmod -R go+rw /config
+  sudo chown -R mysql:mysql /var/lib/mysql
+  sudo chmod -R go+rw /config
   
   #Get docker env timezone and set system timezone
   echo "setting the correct local time"
@@ -56,7 +56,7 @@
   dpkg-reconfigure tzdata
   
   echo "starting services"
-  service mysql start
-  service apache2 start
-  service zoneminder start
+  sudo service mysql start
+  sudo service apache2 start
+  sudo service zoneminder start
   
