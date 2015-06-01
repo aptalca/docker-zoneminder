@@ -28,7 +28,8 @@ a2enmod cgi && \
 sudo service apache2 restart && \
 sudo service mysql restart && \
 rm -r /etc/init.d/zoneminder && \
-mkdir -p /etc/my_init.d
+mkdir -p /etc/my_init.d && \
+echo 'root:root' | chpasswd
 
 ADD zoneminder /etc/init.d/zoneminder
 ADD firstrun.sh /etc/my_init.d/firstrun.sh
@@ -49,3 +50,5 @@ sudo chmod +x /etc/my_init.d/firstrun.sh && \
 sudo update-rc.d -f apache2 remove && \
 sudo update-rc.d -f mysql remove && \
 sudo update-rc.d -f zoneminder remove
+
+CMD "bash"
