@@ -5,3 +5,5 @@ MAINTAINER aptalca
 VOLUME ["/config"]
 
 EXPOSE 80
+
+CMD ["/bin/bash"]
