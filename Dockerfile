@@ -31,7 +31,7 @@ wget
 #mkdir -p /etc/my_init.d && \
 #echo 'root:root' | chpasswd
 
-ADD zoneminder /etc/init.d/zoneminder
+#ADD zoneminder /etc/init.d/zoneminder
 ADD firstrun.sh /firstrun.sh
 
 #RUN sudo chmod +x /etc/init.d/zoneminder && \
