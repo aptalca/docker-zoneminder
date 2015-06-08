@@ -14,7 +14,7 @@ python-software-properties && \
 add-apt-repository -y ppa:iconnor/zoneminder && \
 apt-get update && \
 apt-get install -y \
-wget
+wget \
 apache2 \
 mysql-server \
 php5 \
@@ -46,7 +46,7 @@ tar -xzvf cambozola-0.936.tar.gz && \
 cp cambozola-0.936/dist/cambozola.jar /usr/share/zoneminder && \
 cp /etc/zm/apache.conf /root/apache.conf && \
 cp /etc/zm/zm.conf /root/zm.conf && \
-chmod +x /etc/my_init.d/firstrun.sh && \
+#chmod +x /etc/my_init.d/firstrun.sh && \
 update-rc.d -f apache2 remove && \
 update-rc.d -f mysql remove && \
 update-rc.d -f zoneminder remove
