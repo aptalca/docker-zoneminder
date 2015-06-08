@@ -32,9 +32,10 @@ rm -r /etc/init.d/zoneminder && \
 mkdir -p /etc/my_init.d
 
 ADD zoneminder /etc/init.d/zoneminder
-ADD firstrun.sh /firstrun.sh
+ADD firstrun.sh /etc/my_init.d/firstrun.sh
 
 RUN chmod +x /etc/init.d/zoneminder && \
+chmod +x /etc/my_init.d/firstrun.sh && \
 mkdir /etc/apache2/conf.d && \
 ln -s /etc/zm/apache.conf /etc/apache2/conf.d/zoneminder.conf && \
 ln -s /etc/zm/apache.conf /etc/apache2/conf-enabled/zoneminder.conf && \
@@ -46,7 +47,6 @@ tar -xzvf cambozola-0.936.tar.gz && \
 cp cambozola-0.936/dist/cambozola.jar /usr/share/zoneminder && \
 cp /etc/zm/apache.conf /root/apache.conf && \
 cp /etc/zm/zm.conf /root/zm.conf && \
-#chmod +x /etc/my_init.d/firstrun.sh && \
 update-rc.d -f apache2 remove && \
 update-rc.d -f mysql remove && \
 update-rc.d -f zoneminder remove
