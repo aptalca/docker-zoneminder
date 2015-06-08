@@ -6,4 +6,4 @@ VOLUME ["/config"]
 
 EXPOSE 80
 
-CMD ["/bin/bash"]
+CMD echo "sleeping" && sleep infinity
