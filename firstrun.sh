@@ -62,6 +62,5 @@
   echo "starting services"
   service mysql start
   service apache2 start
-  sleep 10s
   service zoneminder start
   
