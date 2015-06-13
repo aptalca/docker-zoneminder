@@ -50,5 +50,3 @@ cp /etc/zm/zm.conf /root/zm.conf && \
 update-rc.d -f apache2 remove && \
 update-rc.d -f mysql remove && \
 update-rc.d -f zoneminder remove
-
-CMD echo "sleeping" && sleep infinity
