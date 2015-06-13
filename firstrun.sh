@@ -56,6 +56,7 @@
   dpkg-reconfigure tzdata
   
   #fix memory issue
+  echo "increasing shared memory"
   umount /dev/shm
   mount -t tmpfs -o rw,nosuid,nodev,noexec,relatime,size=${MEM:-4096M} tmpfs /dev/shm
   
