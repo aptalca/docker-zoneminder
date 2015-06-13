@@ -1,4 +1,4 @@
-FROM ubuntu:14.04.2
+FROM phusion/baseimage:0.9.16
 
 MAINTAINER aptalca
 
