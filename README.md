@@ -5,7 +5,7 @@
 On unRaid, install from the Community Repositories and enter the app folder location and the port for the webUI.
 
 
-##Install On Other Platforms (like Synology 5.2 DSM):
+##Install On Other Platforms (like Ubuntu or Synology 5.2 DSM, etc.):
 
 On other platforms, you can run this docker with the following command:
 
