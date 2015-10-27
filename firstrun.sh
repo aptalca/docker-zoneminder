@@ -39,13 +39,24 @@
     echo "using existing data directory"
   fi
   
+  if [ ! -d /config/perl5 ]; then
+    echo "moving perl data folder to config folder"
+    mkdir /config/perl5
+    cp -R -p /usr/share/perl5/ZoneMinder /config/perl5/
+  else
+    echo "using existing perl data directory"
+  fi
+
+  
   echo "creating symbolink links"
   rm -r /usr/share/zoneminder
   rm -r /var/lib/mysql
   rm -r /etc/zm
+  rm -r /usr/share/perl5/ZoneMinder
   ln -s /config/data/zoneminder /usr/share/zoneminder
   ln -s /config/mysql /var/lib/mysql
   ln -s /config /etc/zm
+  ln -s /config/perl5/ZoneMinder /usr/share/perl5/ZoneMinder
   chown -R mysql:mysql /var/lib/mysql
   chmod -R go+rw /config
   
