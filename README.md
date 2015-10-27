@@ -24,7 +24,4 @@ docker run -d --name="Zoneminder" --privileged=true -v /path/to/config:/config:r
 - Next to ffmpeg_formats, add mp4 (you can also add a star after mp4 and remove the star after avi to make mp4 the default format)
 - Hit save
 - Now you should be able to add your cams and record in mp4 x264 format
-- PS. In options under display, change the skin to "flat" it looks 100 times nicer  
-
-## Changelog:  
-2015-10-27 - perl5/ZoneMinder folder is now persistent and available in the config folder to allow easy access for custom perl scripts - usbutils included in the package for usb camera support (needs to be further tested)  
+- PS. In options under display, change the skin to "flat" it looks 100 times nicer
