@@ -18,7 +18,8 @@ wget \
 apache2 \
 mysql-server \
 php5 \
-libapache2-mod-php5 && \
+libapache2-mod-php5 \
+usbutils && \
 service apache2 restart && \
 service mysql restart && \
 apt-get install -y \
