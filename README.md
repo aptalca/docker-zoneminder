@@ -26,7 +26,9 @@ docker run -d --name="Zoneminder-1.29" --privileged=true -v /path/to/config:/con
 - Now you should be able to add your cams and record in mp4 x264 format
 
 #### Important:
-- The default timeone for php is set as America/New_York if you would like to change it, edit the php.ini in the config folder. Here's a list of available timezone options: http://php.net/manual/en/timezones.php
+- The web gui will be available at http://serverip:port/zm
+- On first start, open zoneminder settings, go to the paths tab and enter the following for PATH_ZMS: ```/zm/cgi-bin/nph-zms```
+- The default timezone for php is set as America/New_York if you would like to change it, edit the php.ini in the config folder. Here's a list of available timezone options: http://php.net/manual/en/timezones.php
 
 #### Changelog:  
 - 2016-03-10 - Release
