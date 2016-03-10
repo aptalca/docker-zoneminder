@@ -33,7 +33,7 @@ libvlccore-dev vlc && \
 mysql -uroot < /usr/share/zoneminder/db/zm_create.sql && \
 mysql -uroot -e "grant all on zm.* to 'zmuser'@localhost identified by 'zmpass';" && \
 chmod 740 /etc/zm/zm.conf && \
-chown www-data:www-data /etc/zm/zm.conf && \
+chown root:www-data /etc/zm/zm.conf && \
 a2enconf zoneminder && \
 a2enmod rewrite && \
 a2enmod cgi && \
