@@ -1,4 +1,4 @@
-### Zoneminder
+### Zoneminder 1.29
 
 #### Install On unRaid:
 
@@ -10,7 +10,7 @@ On unRaid, install from the Community Repositories and enter the app folder loca
 On other platforms, you can run this docker with the following command:
 
 ```
-docker run -d --name="Zoneminder" --privileged=true -v /path/to/config:/config:rw -v /etc/localtime:/etc/localtime:ro -p 80:80 aptalca/docker-zoneminder
+docker run -d --name="Zoneminder-1.29" --privileged=true -v /path/to/config:/config:rw -v /etc/localtime:/etc/localtime:ro -p 80:80 aptalca/zoneminder-1.29
 ```
 
 #### Tips and Setup Instructions:
@@ -24,8 +24,10 @@ docker run -d --name="Zoneminder" --privileged=true -v /path/to/config:/config:r
 - Next to ffmpeg_formats, add mp4 (you can also add a star after mp4 and remove the star after avi to make mp4 the default format)
 - Hit save
 - Now you should be able to add your cams and record in mp4 x264 format
-- PS. In options under display, change the skin to "flat" it looks 100 times nicer
+
+#### Important:
+- The default timeone for php is set as America/New_York if you would like to change it, edit the php.ini in the config folder. Here's a list of available timezone options: http://php.net/manual/en/timezones.php
 
 #### Changelog:  
-- 2015-10-27 - perl5/ZoneMinder folder is now persistent and available in the config folder to allow easy access for custom perl scripts - usbutils included in the package for usb camera support (needs to be further tested)  
+- 2016-03-10 - Release
 
