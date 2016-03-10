@@ -14,6 +14,13 @@
   else
     echo "zm.conf already exists"
   fi
+
+  if [ ! -f /config/php.ini ]; then
+    echo "copying php.ini"
+    cp  /etc/php5/apache2/php.ini /config/php.ini
+  else
+    echo "php.ini already exists"
+  fi
   
   # Copy mysql database if it doesn't exit
   if [ ! -d /config/mysql/mysql ]; then
