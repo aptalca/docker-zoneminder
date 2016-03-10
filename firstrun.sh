@@ -1,25 +1,12 @@
 #!/bin/bash
   
   #Search for config files, if they don't exist, copy the default ones
-  if [ ! -f /config/apache.conf ]; then
-    echo "copying apache.conf"
-    cp /root/apache.conf /config/apache.conf
-  else
-    echo "apache.conf already exists"
-  fi
-  
-  if [ ! -f /config/zm.conf ]; then
-    echo "copying zm.conf"
-    cp /root/zm.conf /config/zm.conf
-  else
-    echo "zm.conf already exists"
-  fi
-
   if [ ! -f /config/php.ini ]; then
     echo "copying php.ini"
     cp  /etc/php5/apache2/php.ini /config/php.ini
   else
     echo "php.ini already exists"
+    cp /config/php.ini /etc/php5/apache2/php.ini
   fi
   
   # Copy mysql database if it doesn't exit
