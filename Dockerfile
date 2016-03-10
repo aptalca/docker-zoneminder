@@ -1,4 +1,4 @@
-FROM phusion/baseimage:0.9.16
+FROM phusion/baseimage:0.9.18
 
 MAINTAINER aptalca
 
@@ -31,7 +31,9 @@ zoneminder \
 libvlc-dev \
 libvlccore-dev vlc && \
 mysql -uroot < /usr/share/zoneminder/db/zm_create.sql && \
-mysql -uroot -e "grant select,insert,update,delete,create,alter,index,lock tables on zm.* to 'zmuser'@localhost identified by 'zmpass';" && \
+mysql -uroot -e "grant all on zm.* to 'zmuser'@localhost identified by 'zmpass';" && \
+chmod 740 /etc/zm/zm.conf && \
+chown root:www-data /etc/zm/zm.conf && \
 a2enconf zoneminder && \
 a2enmod rewrite && \
 a2enmod cgi && \
