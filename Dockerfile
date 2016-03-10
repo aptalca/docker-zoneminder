@@ -49,9 +49,6 @@ ADD firstrun.sh /etc/my_init.d/firstrun.sh
 
 RUN chmod +x /etc/init.d/zoneminder && \
 chmod +x /etc/my_init.d/firstrun.sh && \
-mkdir /etc/apache2/conf.d && \
-ln -s /etc/zm/apache.conf /etc/apache2/conf.d/zoneminder.conf && \
-ln -s /etc/zm/apache.conf /etc/apache2/conf-enabled/zoneminder.conf && \
 adduser www-data video && \
 service apache2 restart && \
 cd /usr/src && \
