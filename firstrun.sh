@@ -45,11 +45,9 @@
   echo "creating symbolink links"
   rm -r /usr/share/zoneminder
   rm -r /var/lib/mysql
-  rm -r /etc/zm
   rm -r /usr/share/perl5/ZoneMinder
   ln -s /config/data/zoneminder /usr/share/zoneminder
   ln -s /config/mysql /var/lib/mysql
-  ln -s /config /etc/zm
   ln -s /config/perl5/ZoneMinder /usr/share/perl5/ZoneMinder
   chown -R mysql:mysql /var/lib/mysql
   chmod -R go+rw /config
