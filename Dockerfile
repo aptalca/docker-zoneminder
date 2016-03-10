@@ -18,15 +18,25 @@ wget \
 apache2 \
 mysql-server \
 php5 \
+php5-gd \
 libapache2-mod-php5 \
-usbutils && \
+usbutils \
+vlc \
+libvlc-dev \
+libvlccore-dev && \
 service apache2 restart && \
 service mysql restart && \
 apt-get install -y \
 zoneminder \
 libvlc-dev \
 libvlccore-dev vlc && \
+mysql -uroot < /usr/share/zoneminder/db/zm_create.sql && \
+mysql -uroot -e "grant select,insert,update,delete,create,alter,index,lock tables on zm.* to 'zmuser'@localhost identified by 'zmpass';" && \
+a2enconf zoneminder && \
+a2enmod rewrite && \
 a2enmod cgi && \
+chown -R www-data:www-data /usr/share/zoneminder/ && \
+sed  -i 's/\;date.timezone =/date.timezone = \"America\/New_York\"/' /etc/php5/apache2/php.ini && \
 service apache2 restart && \
 service mysql restart && \
 rm -r /etc/init.d/zoneminder && \
