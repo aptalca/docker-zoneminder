@@ -54,7 +54,7 @@ service apache2 restart && \
 cd /usr/src && \
 wget http://www.charliemouse.com:8080/code/cambozola/cambozola-0.936.tar.gz && \
 tar -xzvf cambozola-0.936.tar.gz && \
-cp cambozola-0.936/dist/cambozola.jar /usr/share/zoneminder && \
+cp cambozola-0.936/dist/cambozola.jar /usr/share/zoneminder/www && \
 update-rc.d -f apache2 remove && \
 update-rc.d -f mysql remove && \
 update-rc.d -f zoneminder remove
