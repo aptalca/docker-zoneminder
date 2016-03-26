@@ -39,14 +39,14 @@
 
   
   echo "creating symbolink links"
-  rm -r /usr/share/zoneminder/events
-  rm -r /usr/share/zoneminder/images
-  rm -r /usr/share/zoneminder/temp
+  rm -r /usr/share/zoneminder/www/events
+  rm -r /usr/share/zoneminder/www/images
+  rm -r /usr/share/zoneminder/www/temp
   rm -r /var/lib/mysql
   rm -r /usr/share/perl5/ZoneMinder
-  ln -s /config/data/events /usr/share/zoneminder/events
-  ln -s /config/data/images /usr/share/zoneminder/images
-  ln -s /config/data/temp /usr/share/zoneminder/temp
+  ln -s /config/data/events /usr/share/zoneminder/www/events
+  ln -s /config/data/images /usr/share/zoneminder/www/images
+  ln -s /config/data/temp /usr/share/zoneminder/www/temp
   ln -s /config/mysql /var/lib/mysql
   ln -s /config/perl5/ZoneMinder /usr/share/perl5/ZoneMinder
   chown -R mysql:mysql /var/lib/mysql
