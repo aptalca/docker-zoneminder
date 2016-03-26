@@ -44,17 +44,14 @@ service mysql restart && \
 rm -r /etc/init.d/zoneminder && \
 mkdir -p /etc/my_init.d
 
-ADD zoneminder /etc/init.d/zoneminder
-ADD firstrun.sh /etc/my_init.d/firstrun.sh
+COPY zoneminder /etc/init.d/zoneminder
+COPY firstrun.sh /etc/my_init.d/firstrun.sh
+COPY cambozola.jar /usr/share/zoneminder/www/cambozola.jar
 
 RUN chmod +x /etc/init.d/zoneminder && \
 chmod +x /etc/my_init.d/firstrun.sh && \
 adduser www-data video && \
 service apache2 restart && \
-cd /usr/src && \
-wget http://www.charliemouse.com:8080/code/cambozola/cambozola-0.936.tar.gz && \
-tar -xzvf cambozola-0.936.tar.gz && \
-cp cambozola-0.936/dist/cambozola.jar /usr/share/zoneminder/www && \
 update-rc.d -f apache2 remove && \
 update-rc.d -f mysql remove && \
 update-rc.d -f zoneminder remove
