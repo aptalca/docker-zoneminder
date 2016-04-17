@@ -9,9 +9,7 @@ On unRaid, install from the Community Repositories and enter the app folder loca
 
 On other platforms, you can run this docker with the following command:
 
-```
-docker run -d --name="Zoneminder-1.29" --privileged=true -v /path/to/config:/config:rw -v /etc/localtime:/etc/localtime:ro -p 80:80 aptalca/zoneminder-1.29
-```
+`docker run -d --name="Zoneminder-1.29" --privileged=true -v /path/to/config:/config:rw -v /etc/localtime:/etc/localtime:ro -p 80:80 aptalca/zoneminder-1.29`
 
 #### Tips and Setup Instructions:
 - This container includes mysql, no need for a separate mysql/mariadb container
