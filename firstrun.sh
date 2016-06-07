@@ -36,6 +36,13 @@
   else
     echo "using existing perl data directory"
   fi
+  
+  if [ ! -d /config/ssmtp ]; then
+    echo "creating default ssmtp settings"
+    cp -R /etc/ssmtp /config
+  else
+    echo "using existing ssmtp settings"
+  fi
 
   
   echo "creating symbolink links"
@@ -44,11 +51,13 @@
   rm -r /usr/share/zoneminder/www/temp
   rm -r /var/lib/mysql
   rm -r /usr/share/perl5/ZoneMinder
+  rm -r /etc/ssmtp
   ln -s /config/data/events /usr/share/zoneminder/www/events
   ln -s /config/data/images /usr/share/zoneminder/www/images
   ln -s /config/data/temp /usr/share/zoneminder/www/temp
   ln -s /config/mysql /var/lib/mysql
   ln -s /config/perl5/ZoneMinder /usr/share/perl5/ZoneMinder
+  ln -s /config/ssmtp /etc/ssmtp
   chown -R mysql:mysql /var/lib/mysql
   chown -R www-data:www-data /config/data
   chmod -R go+rw /config
