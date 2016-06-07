@@ -23,7 +23,9 @@ libapache2-mod-php5 \
 usbutils \
 vlc \
 libvlc-dev \
-libvlccore-dev && \
+libvlccore-dev \
+ssmtp \
+mailutils && \
 service apache2 restart && \
 service mysql restart && \
 apt-get install -y \
