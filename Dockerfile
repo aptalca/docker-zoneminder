@@ -34,7 +34,6 @@ libvlc-dev \
 libvlccore-dev vlc && \
 rm /etc/mysql/my.cnf && \
 cp /etc/mysql/mysql.conf.d/mysqld.cnf /etc/mysql/my.cnf && \
-#sed -i 's/\[mysqld\]/\[mysqld\]\nsql_mode = NO_ENGINE_SUBSTITUTION\n/' /etc/mysql/my.cnf && \
 sed -i 's/skip-external-locking/skip-external-locking\nsql_mode = NO_ENGINE_SUBSTITUTION/' /etc/mysql/my.cnf && \
 mysql -uroot < /usr/share/zoneminder/db/zm_create.sql && \
 mysql -uroot -e "grant all on zm.* to 'zmuser'@localhost identified by 'zmpass';" && \
