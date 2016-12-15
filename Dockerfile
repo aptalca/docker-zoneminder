@@ -1,4 +1,4 @@
-FROM phusion/baseimage:0.9.18
+FROM phusion/baseimage:0.9.19
 
 MAINTAINER aptalca
 
@@ -17,9 +17,9 @@ apt-get install -y \
 wget \
 apache2 \
 mysql-server \
-php5 \
-php5-gd \
-libapache2-mod-php5 \
+php \
+php-gd \
+libapache2-mod-php \
 usbutils \
 vlc \
 libvlc-dev \
@@ -40,7 +40,7 @@ a2enconf zoneminder && \
 a2enmod rewrite && \
 a2enmod cgi && \
 chown -R www-data:www-data /usr/share/zoneminder/ && \
-sed  -i 's/\;date.timezone =/date.timezone = \"America\/New_York\"/' /etc/php5/apache2/php.ini && \
+sed  -i 's/\;date.timezone =/date.timezone = \"America\/New_York\"/' /etc/php/7.0/apache2/php.ini && \
 service apache2 restart && \
 service mysql restart && \
 rm -r /etc/init.d/zoneminder && \

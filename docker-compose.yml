@@ -1,0 +1,15 @@
+version: '2'
+
+volumes:
+  config-data: {}
+
+services:
+  zoneminder:
+    build: .
+    privileged: true
+    ports:
+      - "80:80"
+    volumes:
+      - config-data:/config
+    environment:
+      - "TZ=America/Phoenix"
