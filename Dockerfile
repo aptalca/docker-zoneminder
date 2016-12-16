@@ -1,4 +1,4 @@
-FROM phusion/baseimage:0.9.18
+FROM phusion/baseimage:0.9.19
 
 MAINTAINER aptalca
 
@@ -13,13 +13,14 @@ software-properties-common \
 python-software-properties && \
 add-apt-repository -y ppa:iconnor/zoneminder && \
 apt-get update && \
+apt-get upgrade -y && \
 apt-get install -y \
 wget \
 apache2 \
 mysql-server \
-php5 \
-php5-gd \
-libapache2-mod-php5 \
+php \
+php-gd \
+libapache2-mod-php \
 usbutils \
 vlc \
 libvlc-dev \
@@ -29,9 +30,11 @@ mailutils && \
 service apache2 restart && \
 service mysql restart && \
 apt-get install -y \
-zoneminder \
-libvlc-dev \
-libvlccore-dev vlc && \
+zoneminder && \
+rm /etc/mysql/my.cnf && \
+cp /etc/mysql/mysql.conf.d/mysqld.cnf /etc/mysql/my.cnf && \
+sed -i 's/skip-external-locking/skip-external-locking\nsql_mode = NO_ENGINE_SUBSTITUTION/' /etc/mysql/my.cnf && \
+service mysql restart && \
 mysql -uroot < /usr/share/zoneminder/db/zm_create.sql && \
 mysql -uroot -e "grant all on zm.* to 'zmuser'@localhost identified by 'zmpass';" && \
 chmod 740 /etc/zm/zm.conf && \
@@ -40,7 +43,7 @@ a2enconf zoneminder && \
 a2enmod rewrite && \
 a2enmod cgi && \
 chown -R www-data:www-data /usr/share/zoneminder/ && \
-sed  -i 's/\;date.timezone =/date.timezone = \"America\/New_York\"/' /etc/php5/apache2/php.ini && \
+sed  -i 's/\;date.timezone =/date.timezone = \"America\/New_York\"/' /etc/php/7.0/apache2/php.ini && \
 service apache2 restart && \
 service mysql restart && \
 rm -r /etc/init.d/zoneminder && \
